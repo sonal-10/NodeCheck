@@ -16,6 +16,6 @@ event.on('order-piza',(size)=>{
 
 
 console.log("Code before the event");
-event.emit('order-pizza','large','mushrooms');  // Run Asynchronously only when the event is there
+event.emit('order-pizza','large','mushrooms');  // Run Non Blocking (Asynchronously) only when the event is there
 console.log("Code after the event");
 
