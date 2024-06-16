@@ -18,16 +18,17 @@ async function getUser(){
         const users = data.map(user => 
             new User(user.name)
         );
-
+        let names = [];
         // Print the Users
         users.forEach((user)=>{
-            console.log(user.name);
+            names.push(user.name);
         });
+        return names;
     }
     catch(error){
         console.log("Failed to Fetch from Database");
+        return [];
     }
 }
 
-getUser();
-module.exports = User;
+module.exports = getUser;
