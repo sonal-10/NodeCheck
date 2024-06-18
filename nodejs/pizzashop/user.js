@@ -22,12 +22,17 @@ async function getUser() {
         const users = data.map(user =>
             new User(user.name)
         );
-
-        return users;
+        let names = [];
+        // Print the Users
+        users.forEach((user)=>{
+            names.push(user.name);
+        });
+        return names;
     }
-    catch (error) {
-        console.log("Failed to Fetch from API");
+    catch(error){
+        console.log("Failed to Fetch from Database");
+        return [];
     }
 }
 
-module.exports = { User, getUser };
+module.exports = getUser;

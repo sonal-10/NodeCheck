@@ -1,31 +1,55 @@
 const PizzaShop = require('./pizzashop.js');
-const { User, getUser } = require('./user.js');
+const getUser = require('./user.js');
+
+const pizzaSizes = ["small", "medium", "large", "extra-large"];
+const toppings = ["Sausages", "Corn", "Olives", "Cheese"];
 
 const user = new User();
 const pizzashop = new PizzaShop();
 
-async function orderPizza() {
+async function makePizza() {
     try {
-        const users = await getUser();
-        
-        console.log(users[0]);
+        // Get User Requests
+        const userNames = await getUser();
 
-        pizzashop.order("large", "Sausages", users.username);
-        
-        pizzashop.on("order", (size, topping) => {
-            if (!size)
-                throw new Error("Oops!!. You forgot to click the size of your pizza.");
-            if (topping?.trim()?.length != 0 && topping != null) {
-                console.log(`Order received!. ${user.username} Order Number ${pizzashop.displayOrderNumber()} Baking a ${size} pizza with ${topping}`);
-            }
-            else {
-                console.log(`Order received!. ${user.username} Order Number ${pizzashop.displayOrderNumber()} Baking a ${size} pizza.`);
-            }
+        // Place orders for each user
+        userNames.forEach(user => {
+
+            let pizzaSize = pizzaSizes[Math.floor(Math.random() * pizzaSizes.length)];
+            let topping = toppings[Math.floor(Math.random() * toppings.length)];
+            let customername = user;
+
+            // Order the pizza
+            pizzashop.order(pizzaSize, topping, customername);
+            console.log("\n-----------------------------------------\n");
+
+
+            // Event listener for the "order" event, fires only once 
+            pizzashop.once("order", (pizzaSize, topping, customername) => {
+                try {
+                    if (pizzaSize === "")
+                        throw new Error("Oops!!. You forgot to click the size of your pizza.");
+
+                    if (topping.trim().length !== 0 && topping !== null)
+                        console.log(`Hello ${customername} your Order has been received!.\n
+                             Your Order Number ${pizzashop.displayOrderNumber()}.\n
+                             Baking a ${pizzaSize} pizza with ${topping}`);
+                    else
+                        console.log(`Hello ${customername} your Order has been received!.\n
+                             Your Order Number ${pizzashop.displayOrderNumber()}.\n
+                             Baking a ${pizzaSize} pizza.`);
+
+                } catch (error) {
+                    console.log(error);
+                }
+            });
+
         });
-    }
+
+    } 
     catch (error) {
-        console.log(error);
+        console.error(error);
     }
 }
 
-orderPizza();
+makePizza();
