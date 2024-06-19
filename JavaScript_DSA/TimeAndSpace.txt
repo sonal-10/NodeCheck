@@ -1,0 +1,120 @@
+How to measure a Algorithm
+Algorithm Analysis
+
+Run time of an Algorithm cannot be predicted since it depends on 
+various factors
+
+- Programming Language
+- Computer on which the program runs on
+- Other programs running at the same time
+- Quality of the operating system
+
+Evalute of the performance of an algorithm in terms of
+
+Input Size
+
+Time Complexity Amount of time taken by an algorithm to run as a function of input Size
+Space Complexity Amount of memory taken by an algorithm to run as a function of input Size
+
+Asymptotic notations
+    1. Big-O notations - Worst case Complexity (Concentrate)
+    2. Omega notations - Best case Complexity
+    3. Theta notations - Average case Complexity
+
+Complexity of an algorithm using algebraic terms
+    It is expressed in terms of the input.
+    It focuses on the bigger picture.
+
+// Find the sum of N natural numbers
+total times the line is executed 
+function summation(n){
+    let sum = 0;            1 time
+    for(let i=0;i<n;i++){
+        sum+=i;             n times
+    }
+    return sum              1 time 
+}
+
+total may be n + 2 but for very large n n ~ n
+
+O(n) - Linear
+loop over a entire array 
+
+function summation(n){
+    return(n*(n+1)/2);
+}
+
+This is O(1) constant time
+
+In the case of 2 for loops 
+for(i = 1; i<=n; i++){
+    for(j=1;j<=i;j++){
+
+    }
+}
+
+Time Complexity is O(n^2) - Quadratic 3n^2 + 5n + 1
+
+In the case of 2 for loops 
+for(i = 1; i<=n; i++){
+    for(j=1;j<=i;j++){
+        for(k=1;k<n;k++){
+
+        }
+    }
+}
+
+Time Complexity is O(n^3) - Cubic 4n^3 + 2n^2 + 5n + 1
+
+If the input size reduces by half every iteration
+O(nlogn) - Logarithmic
+
+===========================================================
+
+Space Complexity 
+It is memory effeciency
+
+O(1) constant
+O(n) Linear
+O(logn) Logarithmic
+
+O(n^2) is fine for Time Complexity
+O(n^2) for space Complexity should be avoided.
+
+============================================================
+
+Big-O Objects and Arrays
+
+Object is collection of key value pairs
+
+const person = {
+    firstName : 'Sonal',
+    lastName  : 'Monis'
+}
+
+Constant Time Complexity
+Insert O(1)
+Remove O(1)
+Access O(1)
+
+Linear Time Complexity
+Search O(n)
+Object.keys() O(n)
+Object.values() O(n)
+Object.entries() O(n)
+
+Arrays is ordered collection
+
+const add = [1,2,3,4,5]
+
+Insert/Remove at end - O(1)
+Insert/Remove at beginning - O(n)
+Access - O(1)
+Search - O(n)
+
+Push/Pop - O(1)
+Shift/Unshift/concat/slice/splice - O(n)
+forEach/map/filter/reduce - O(n)
+
+
+
