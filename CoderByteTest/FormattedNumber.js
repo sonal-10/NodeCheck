@@ -2,7 +2,7 @@ function FormattedNumber(strArr) {
   const numStr = strArr[0];
 
   // String Check [3numbers],[3numbers]any length [.decimalpoint and any numbers]and ends
-  const regex = /^(\d{1,3})(,\d{3})*(\.\d+)?$/;
+  const regex = /^(\d{1,3})(,\d{3})*(\.\d{1,3})(,\d{3})*$/;
 
   // Test the string if it contains anything other than numbers , or .
   if (!regex.test(numStr))
@@ -13,7 +13,7 @@ function FormattedNumber(strArr) {
     return "false";
 
   // Checking Comma positions
-  if (numStr.includes(',')) {
+  if (numStr.includes(',')) {''
     // Split into integers and fraction parts
     const parts = numStr.split('.');
     const integerPart = parts[0];
@@ -27,10 +27,18 @@ function FormattedNumber(strArr) {
         }
       }
     }
+    if(fractionalPart.includes(',')){
+      const fractionalGroup = fractionalPart.split(',');
+      for (let i = 0; i < fractionalGroup.length; i++) {
+        if (i > 0 && fractionalGroup[i].length !== 3) {
+          return "false";
+        }
+      }
+    }
   }
   return "true";
 
 }
 
 // keep this function call here 
-console.log(FormattedNumber(["0,1.23"]));
+console.log(FormattedNumber(["0.100,123,231,1"]));
