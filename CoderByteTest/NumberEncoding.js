@@ -1,20 +1,20 @@
 function NumberEncoding(str) {
 
-    let stringEncode = '';
-    for (let i = 0; i < str.length; i++) {
-      // Take one character
-      let character = str[i];
-      // Check if it from [a - z] then encode "a" - "a" logic
-      if (character >= 'a' && character <= 'z') {
-        stringEncode += (character.charCodeAt() - "a".charCodeAt())+1;
-      }
-      else{
-        stringEncode += character;
-      }
+  // str = str.toLowerCase();
+  let encodeString = '';
+
+  for (i = 0; i < str.length; i++) {
+    let character = str[i];
+
+    if (character >= 'a' && character <= 'z') {
+      encodeString += (character.charCodeAt() - 'a'.charCodeAt() + 1);
     }
-    return(stringEncode); 
-  
+    else{
+      encodeString += character;
+    }
   }
-  
-  // keep this function call here 
-  console.log(NumberEncoding(readline()));
+  return encodeString;
+}
+
+// keep this function call here 
+console.log(NumberEncoding('abc! {3}./*-+@A'));
