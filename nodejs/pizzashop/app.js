@@ -4,7 +4,7 @@ const getUser = require('./user.js');
 const pizzaSizes = ["small", "medium", "large", "extra-large"];
 const toppings = ["Sausages", "Corn", "Olives", "Cheese"];
 
-const user = new User();
+
 const pizzashop = new PizzaShop();
 
 async function makePizza() {
