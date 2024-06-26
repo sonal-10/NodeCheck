@@ -7,7 +7,7 @@ function update(){
     console.log(formatTime(date));
 
     function formatTime(date){
-        let hours = date.getHours();
+        let hours   = date.getHours();
         let minutes = date.getMinutes();
         let seconds = date.getSeconds();
 
@@ -15,7 +15,7 @@ function update(){
 
         hours = (hours % 12) || 12;
 
-        hours = formatZeros(hours);
+        hours   = formatZeros(hours);
         minutes = formatZeros(minutes);
         seconds = formatZeros(seconds);
 

@@ -1,5 +1,6 @@
 // Objects without a name are annonymous objects which cannot be refrenced directly.
 // Less syntax and no need of unique names;
+// Spacing Issue
 class Card {
     constructor(value, suit) {
         this.value = value;
@@ -18,7 +19,7 @@ let cards = [
     new Card('5', "Hearts")];
 
 cards.forEach((card) => {
-    console.log(`${card.suit} ${card.value}`);
+    console.log(`${card.suit}\t${card.value}`);
 });
 console.log();
 shuffle(cards);
@@ -38,5 +39,5 @@ function shuffle(cards){
 }
 
 cards.forEach((card) => {
-    console.log(`${card.suit} ${card.value}`);
+    console.log(`${card.suit}\t${card.value}`);
 });

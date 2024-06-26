@@ -2,15 +2,17 @@
 
 let numbers = [1,2,3,4,5];
 
-let squares = numbers.map(sqaure);
+
+// ES6 standard Arrow Functions
+let squares = numbers.map((element) => {
+  return Math.pow(element,2);
+});
+
+
 let cubes = numbers.map(cube);
 
 squares.forEach(print);
 cubes.forEach(print);
-
-function sqaure(element){
-  return Math.pow(element,2);
-}
 
 function cube(element){
     return Math.pow(element,3);  

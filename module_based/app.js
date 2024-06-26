@@ -8,5 +8,5 @@ async function run() {
         console.error(error);
     }
 }
-
+// Executes in 5seconds
 run();
