@@ -22,10 +22,12 @@ function studentRouter(client) {
 
     // GET one student
     router.get('/:id', async (req, res) => {
-        const id = Number(req.params.id);
+        const id = req.params.id;
         if (req.method === "GET") {
             try {
-                const student = await DB_COLLECTIONS.findOne({ _id: id });
+                const student = await DB_COLLECTIONS.findOne({
+                    _id: new ObjectId(id)
+                });
                 if (student === null) {
                     return res.status(404).json({
                         message: "Could not Find Student"
@@ -52,7 +54,7 @@ function studentRouter(client) {
             const result = await DB_COLLECTIONS.insertOne(student);
             console.log(result);
             res.status(201).json(
-                result.ops[0]
+                result
             );
         } catch (err) {
             res.status(400).json({
@@ -63,7 +65,7 @@ function studentRouter(client) {
 
     // PATCH Request
     router.patch('/:id', async (req, res) => {
-        const id = Number(req.params.id);
+        const id = req.params.id;
         const updates = {
             name: req.body.name,
             scores: req.body.scores
@@ -74,23 +76,27 @@ function studentRouter(client) {
                 { $set: updates }
             );
             if (result.matchedCount === 0) {
-                return res.status(404).json({ 
-                    message: 'Cannot find student' 
+                return res.status(404).json({
+                    message: 'Cannot find student'
                 });
             }
-            res.json(DB_COLLECTIONS.findOne({ _id: id }));
+            res.json(DB_COLLECTIONS.findOne({ 
+                _id: new ObjectId(id) 
+            }));
         } catch (err) {
-            res.status(400).json({ 
-                message: err.message 
+            res.status(400).json({
+                message: err.message
             });
         }
     });
 
     // DELETE Request
     router.delete('/:id', async (req, res) => {
-        const id = Number(req.params.id);
+        const id = req.params.id;
         try {
-            const result = await DB_COLLECTIONS.deleteOne({ _id: id });
+            const result = await DB_COLLECTIONS.deleteOne({
+                _id: new ObjectId(id) 
+            });
             if (result.deletedCount === 0) {
                 return res.status(404).json({
                     message: 'Cannot find student'

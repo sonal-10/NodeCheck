@@ -4,7 +4,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node server.js",
-    "devStart":"nodemon server.js"
+    "devStart": "nodemon server.js"
   },
   "keywords": [],
   "author": "",
@@ -15,7 +15,8 @@
     "express": "^4.19.2",
     "express-rate-limit": "^7.3.1",
     "helmet": "^7.1.0",
-    "mongodb": "^6.7.0"
+    "mongodb": "^6.7.0",
+    "mongoose": "^6.4.1"
   },
   "devDependencies": {
     "nodemon": "^3.1.4"
