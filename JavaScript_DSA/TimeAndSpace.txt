@@ -116,5 +116,20 @@ Push/Pop - O(1)
 Shift/Unshift/concat/slice/splice - O(n)
 forEach/map/filter/reduce - O(n)
 
+============================================================
+
+Algorithm Design Techniques
+
+BruteForce
+Greedy
+Divide and Conquer
+Dynamic Programming
+Backtracking
+
+Problems:
+Finding GCD using Euclidian algorithm
+Finding permutation and combinations of list of numbers
+Find the longest common substring in a given string
+Knapsack problem
 
 
