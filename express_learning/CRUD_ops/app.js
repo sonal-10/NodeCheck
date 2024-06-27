@@ -2,6 +2,7 @@ require('dotenv').config();
 
 // Dependencies
 const express = require('express');
+// const compression = require('compression');
 const rateLimit = require('express-rate-limit');
 const { MongoClient } = require('mongodb');
 const bodyParser = require('body-parser');
@@ -16,6 +17,7 @@ const app = express();
 // Middleware
 app.use(helmet()); // Securing HTTP headers
 app.use(bodyParser.json());
+// app.use(compression);
 
 // Rate Limiting
 const limiter = rateLimit({
