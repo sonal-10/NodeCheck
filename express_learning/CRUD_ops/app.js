@@ -38,7 +38,7 @@ async function runPing() {
         console.log(`Failed to Ping Error: ${error}`)
     }
     finally {
-
+        
         console.log(`Connection Closed successfully`);
     }
 }
