@@ -2,8 +2,9 @@ require('dotenv').config();
 
 const express = require('express');
 const expressLayout = require('express-ejs-layouts');
+const methodOverride = require('method-override');
 const session = require('express-session');
-const connectDB = require('./server/config/db');
+const {connectDB} = require('./server/config/db');
 const cookieParser = require('cookie-parser');
 const MongoStore = require('connect-mongo');
 
@@ -16,8 +17,9 @@ const PORT = process.env.PORT || 3000;
 connectDB();
 
 // Used for form parsing and converting it into json
-app.use(express.urlencoded({ extended: true }));
+app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
+app.use(methodOverride('_method'));
 
 app.use(cookieParser());
 app.use(session({
@@ -39,13 +41,14 @@ app.use(express.static('public'));
 // Templating Engine
 app.use(expressLayout);
 app.set('layout', './layouts/main');
-app.set('view engine', 'ejs');
+app.set('view engine', 'ejs'); 
 
 // Setting Routes
 app.use('/', mainRouter);
-app.use('/', adminRouter);
+app.use('/admin', adminRouter);
 
 
 app.listen(PORT, () => {
     console.log(`App listening on port ${PORT}`);
 });
+
